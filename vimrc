@@ -25,6 +25,9 @@ Plugin 'groenewege/vim-less'
 Plugin 'fatih/vim-go'
 Plugin 'chrisbra/csv.vim.git'
 Plugin 'wlangstroth/vim-racket'
+Plugin 'solarnz/thrift.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
