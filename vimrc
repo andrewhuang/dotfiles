@@ -17,17 +17,22 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'digitaltoad/vim-jade.git'
-Plugin 'groenewege/vim-less'
-Plugin 'fatih/vim-go'
-Plugin 'chrisbra/csv.vim.git'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'solarnz/thrift.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'digitaltoad/vim-jade.git'
+"Plugin 'groenewege/vim-less'
+"Plugin 'fatih/vim-go'
+"Plugin 'chrisbra/csv.vim.git'
+"Plugin 'wlangstroth/vim-racket'
+"Plugin 'solarnz/thrift.vim'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,9 +83,14 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+map <Space> <Leader>
+nnoremap <Leader>x i
+set showcmd
+
 """ Airline
 set laststatus=2
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.sls set filetype=yaml
