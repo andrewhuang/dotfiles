@@ -23,6 +23,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'henrik/vim-indexed-search'
 
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'digitaltoad/vim-jade.git'
