@@ -14,8 +14,9 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
 
+" General
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
@@ -24,6 +25,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'henrik/vim-indexed-search'
+Plugin 'craigemery/vim-autotag'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Townsquared
+Plugin 'tpope/vim-cucumber'
+Plugin 'cakebaker/scss-syntax.vim'
 
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'digitaltoad/vim-jade.git'
@@ -58,7 +65,7 @@ set expandtab
 
 """ Misc.
 syntax on
-set nu
+set relativenumber
 set colorcolumn=80
 hi ColorColumn term=reverse ctermbg=0 guibg=Black
 set nowrap
@@ -66,13 +73,14 @@ set nowrap
 colorscheme solarized
 set background=dark
 
+
 """ Search
 set incsearch
 set smartcase
 set ignorecase
 set hlsearch
 
-""" CMD Autocomple
+""" CMD Autocomplete
 set wildmenu
 set wildmode=list:longest:full
 
@@ -86,13 +94,22 @@ nnoremap <c-l> <c-w>l
 
 map <Space> <Leader>
 nnoremap <Leader>x i
-set showcmd
+"set showcmd
+
+""" File Navigation
+set autochdir
 
 """ Airline
 set laststatus=2
 "let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.sls set filetype=yaml
 
+""" NERDTree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
