@@ -63,9 +63,14 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-""" Misc.
+
+""" UI Tweaks
 syntax on
+
+" Hybrid line numbers requires vim 7.4+
+set number
 set relativenumber
+
 set colorcolumn=80
 hi ColorColumn term=reverse ctermbg=0 guibg=Black
 set nowrap
@@ -80,9 +85,11 @@ set smartcase
 set ignorecase
 set hlsearch
 
+
 """ CMD Autocomplete
 set wildmenu
 set wildmode=list:longest:full
+
 
 """ Input
 set mouse=a
@@ -96,8 +103,10 @@ map <Space> <Leader>
 nnoremap <Leader>x i
 "set showcmd
 
+
 """ File Navigation
 set autochdir
+
 
 """ Airline
 set laststatus=2
@@ -107,9 +116,26 @@ set laststatus=2
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.sls set filetype=yaml
 
+
 """ NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+
+
+""" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
