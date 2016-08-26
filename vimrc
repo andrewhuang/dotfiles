@@ -1,82 +1,76 @@
-""" VUNDLE
-set nocompatible              " be iMproved, required
-filetype off                  " required
+""" @andrewhuang .vimrc 2016 ( ﾟ▽ﾟ)/
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+set nocompatible " be iMproved
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+""" vim-plug
+call plug#begin('~/.vim/plugged')
 
 " General
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'craigemery/vim-autotag'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'henrik/vim-indexed-search'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim' " TODO: learn fzf
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+"Plug 'scrooloose/nerdcommenter' // I never use this
+"Plug 'scrooloose/nerdtree'      // I never use this
+"Plug 'scrooloose/syntastic'     // Makes start up slow; should load it async
+"Plug 'tpope/vim-surround'       // I never use this
+
+" Themes
+Plug 'morhetz/gruvbox'
+"Plug 'altercation/vim-colors-solarized'
 
 " Townsquared
-Plugin 'tpope/vim-cucumber'
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'tpope/vim-cucumber'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'burnettk/vim-angular'
 
-"Plugin 'kchmck/vim-coffee-script'
-"Plugin 'digitaltoad/vim-jade.git'
-"Plugin 'groenewege/vim-less'
-"Plugin 'fatih/vim-go'
-"Plugin 'chrisbra/csv.vim.git'
-"Plugin 'wlangstroth/vim-racket'
-"Plugin 'solarnz/thrift.vim'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx'
+" Language specific
+"Plug 'skammer/vim-css-color'
+"Plug 'pangloss/vim-javascript'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'digitaltoad/vim-jade.git'
+"Plug 'groenewege/vim-less'
+"Plug 'fatih/vim-go'
+"Plug 'chrisbra/csv.vim.git'
+"Plug 'wlangstroth/vim-racket'
+"Plug 'solarnz/thrift.vim'
+"Plug 'mxw/vim-jsx'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
+
+
+""" Built in packages
+packadd! matchit
 
 
 """ Indenting
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set ai
 
 
-""" UI Tweaks
-syntax on
+""" UI
+syntax enable
 
 " Hybrid line numbers requires vim 7.4+
 set number
 set relativenumber
 
+set cursorline
 set colorcolumn=80
 hi ColorColumn term=reverse ctermbg=0 guibg=Black
-set nowrap
+"set nowrap
 
-colorscheme solarized
+colorscheme gruvbox
 set background=dark
+
+
+""" Buffers and Tabs
+set hidden
 
 
 """ Search
@@ -100,42 +94,66 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 map <Space> <Leader>
-nnoremap <Leader>x i
+inoremap jk <esc>
 "set showcmd
 
+noremap  <buffer> <silent> k gk
+noremap  <buffer> <silent> j gj
+noremap  <buffer> <silent> 0 g0
+noremap  <buffer> <silent> $ g$
 
 """ File Navigation
 set autochdir
+noremap <Leader>e :e<Space>
+noremap <Leader>w :w<CR>
+noremap <Leader>n :bn<CR>
+noremap <Leader>p :bp<CR>
+nnoremap <Leader>x :bd<CR>
+noremap <Leader>v :vsp<Space>
+noremap <Leader>s :sp<Space>
+noremap <Leader>qq :q<CR>
 
 
 """ Airline
 set laststatus=2
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.sls set filetype=yaml
 
 
-""" NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+""" Syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_html_tidy_blocklevel_tags = ['ui-view']
 
-nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+""" NERDTree
+"let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
+
+"nnoremap <Leader>f :NERDTreeToggle<Enter>
+"nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 
 """ The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
+
+" bind \ (backward slash) to grep shortcut
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap <Leader>/ :Ag<space>
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
