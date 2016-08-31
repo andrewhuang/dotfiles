@@ -85,6 +85,7 @@ set wildmode=list:longest:full
 
 
 """ Input
+set backspace=indent,eol,start
 set mouse=a
 
 nnoremap <c-j> <c-w>j
@@ -96,10 +97,10 @@ map <Space> <Leader>
 inoremap jk <esc>
 "set showcmd
 
-noremap  <buffer> <silent> k gk
-noremap  <buffer> <silent> j gj
-noremap  <buffer> <silent> 0 g0
-noremap  <buffer> <silent> $ g$
+noremap  <silent> k gk
+noremap  <silent> j gj
+noremap  <silent> 0 g0
+noremap  <silent> $ g$
 
 """ File Navigation
 set autochdir
@@ -107,10 +108,10 @@ noremap <Leader>e :e<Space>
 noremap <Leader>w :w<CR>
 noremap <Leader>n :bn<CR>
 noremap <Leader>p :bp<CR>
-nnoremap <Leader>x :bd<CR>
+nnoremap <Leader>d :bd<CR>
 noremap <Leader>v :vsp<Space>
 noremap <Leader>s :sp<Space>
-noremap <Leader>qq :q<CR>
+noremap <Leader>q :q<CR>
 
 
 """ Airline
