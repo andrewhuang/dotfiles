@@ -1,6 +1,7 @@
 """ @andrewhuang .vimrc 2016 ( ﾟ▽ﾟ)/
 
 set nocompatible " be iMproved
+filetype plugin indent on
 
 """ vim-plug
 call plug#begin('~/.vim/plugged')
@@ -10,22 +11,17 @@ Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'henrik/vim-indexed-search'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim' " TODO: learn fzf
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 "Plug 'scrooloose/nerdcommenter' // I never use this
 "Plug 'scrooloose/nerdtree'      // I never use this
 "Plug 'scrooloose/syntastic'     // Makes start up slow; should load it async
-"Plug 'tpope/vim-surround'       // I never use this
 
 " Themes
 Plug 'morhetz/gruvbox'
 "Plug 'altercation/vim-colors-solarized'
-
-" Townsquared
-Plug 'tpope/vim-cucumber'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'burnettk/vim-angular'
 
 " Language specific
 "Plug 'skammer/vim-css-color'
@@ -33,7 +29,7 @@ Plug 'burnettk/vim-angular'
 "Plug 'kchmck/vim-coffee-script'
 "Plug 'digitaltoad/vim-jade.git'
 "Plug 'groenewege/vim-less'
-"Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 "Plug 'chrisbra/csv.vim.git'
 "Plug 'wlangstroth/vim-racket'
 "Plug 'solarnz/thrift.vim'
@@ -62,14 +58,16 @@ set relativenumber
 set cursorline
 set colorcolumn=80
 hi ColorColumn term=reverse ctermbg=0 guibg=Black
-"set nowrap
+set nowrap
 
 colorscheme gruvbox
 set background=dark
 
 
-""" Buffers and Tabs
+""" Buffers, Splits, and Tabs
 set hidden
+set splitbelow
+set splitright
 
 
 """ Search
@@ -93,26 +91,29 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-map <Space> <Leader>
+let mapleader = "\<Space>"
 inoremap jk <esc>
 "set showcmd
 
 noremap  <silent> k gk
 noremap  <silent> j gj
-noremap  <silent> 0 g0
-noremap  <silent> $ g$
+"noremap  <silent> 0 g0
+"noremap  <silent> $ g$
 
 """ File Navigation
 set autochdir
 noremap <Leader>e :e<Space>
 noremap <Leader>w :w<CR>
-noremap <Leader>n :bn<CR>
-noremap <Leader>p :bp<CR>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>d :bd<CR>
 noremap <Leader>v :vsp<Space>
 noremap <Leader>s :sp<Space>
 noremap <Leader>q :q<CR>
+set pastetoggle=<Leader>tp
 
+" This breaks <Leader>n
+"noremap <Leader>nh :nohl<CR>
 
 """ Airline
 set laststatus=2
