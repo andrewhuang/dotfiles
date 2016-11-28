@@ -6,12 +6,9 @@ alias l='ls'
 alias la='ls -la'
 alias v='vim'
 
-# Townsquared specific
-alias startvm='cd ~/repos/localdev && vagrant up && vagrant ssh'
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#  . $(brew --prefix)/etc/bash_completion
+#fi
 
 source ~/repos/bash-powerline/bash-powerline.sh
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
