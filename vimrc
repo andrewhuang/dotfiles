@@ -12,6 +12,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'henrik/vim-indexed-search'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim' " TODO: learn fzf
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -25,7 +26,7 @@ Plug 'morhetz/gruvbox'
 
 " Language specific
 "Plug 'skammer/vim-css-color'
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 "Plug 'kchmck/vim-coffee-script'
 "Plug 'digitaltoad/vim-jade.git'
 "Plug 'groenewege/vim-less'
@@ -33,7 +34,7 @@ Plug 'fatih/vim-go'
 "Plug 'chrisbra/csv.vim.git'
 "Plug 'wlangstroth/vim-racket'
 "Plug 'solarnz/thrift.vim'
-"Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -111,7 +112,6 @@ noremap <Leader>v :vsp<Space>
 noremap <Leader>s :sp<Space>
 noremap <Leader>q :q<CR>
 set pastetoggle=<Leader>tp
-
 " This breaks <Leader>n
 "noremap <Leader>nh :nohl<CR>
 
@@ -158,3 +158,6 @@ nnoremap <Leader>/ :Ag<space>
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" For webpack dev server
+set backupcopy=yes
